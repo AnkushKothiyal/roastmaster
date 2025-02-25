@@ -1,3 +1,4 @@
+
 import streamlit as st
 from google import genai
 import asyncio
@@ -8,7 +9,7 @@ nest_asyncio.apply()
 
 st.title("Gemini API Test")
 
-api_key = st.sidebar.text_input("Enter your Google AI API Key", type="password")
+api_key = st.sidebar.text_input("Enter your Google AI API Key", type="text")
 
 if st.button("Test Gemini API"):
     if not api_key:
@@ -17,12 +18,11 @@ if st.button("Test Gemini API"):
         try:
             with st.spinner("Calling Gemini..."):
                 # Configure the client
-                genai.configure(api_key=api_key)
+                client = genai.Client(api_key=api_key)
                 
                 # Create a synchronous wrapper for the async API call
                 async def call_gemini():
-                    model = genai.GenerativeModel('gemini-2.0-flash')
-                    response = await model.generate_content_async("Say hello")
+                    response = await client.models.generate_content( model="gemini-2.0-flash",contents="Say hello")
                     return response
                 
                 # Run the async function in the current event loop
@@ -34,3 +34,8 @@ if st.button("Test Gemini API"):
         except Exception as e:
             st.error(f"Error: {e}")
             st.error(f"Detailed error: {str(e)}")  # Print full error for debugging
+
+
+
+
+
