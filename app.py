@@ -27,10 +27,7 @@ situation = st.text_area("Describe your situation:", placeholder="While going to
 if st.button("Generate Roast 🔥") and api_key and situation:
     try:
         with st.spinner("Crafting a savage roast..."):
-            # Configure the client
-            genai.configure(api_key=api_key)
-            model = genai.GenerativeModel("gemini-2.0-flash")
-            
+
             # Create prompt
             prompt = f"""
             You are a Roast Master who can produce some of the best roast. You'll be given a situation often a negative one and your job is to create a concise roast for the person.
@@ -57,7 +54,11 @@ if st.button("Generate Roast 🔥") and api_key and situation:
             """
             
             # Generate response
-            response = model.generate_content(prompt)
+            client = genai.Client(api_key=api_key)
+            response = client.models.generate_content(
+                            model="gemini-2.0-flash",
+                            contents=prompt,
+                        )
             
             # Display the roast in a fancy box
             st.success(response.text)
