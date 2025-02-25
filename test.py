@@ -9,7 +9,7 @@ nest_asyncio.apply()
 
 st.title("Gemini API Test")
 
-api_key = st.sidebar.text_input("Enter your Google AI API Key", type="text")
+api_key = st.sidebar.text_input("Enter your Google AI API Key", type="default")
 
 if st.button("Test Gemini API"):
     if not api_key:
