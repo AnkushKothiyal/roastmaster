@@ -34,7 +34,7 @@ if generate_button:
         try:
             with st.spinner("Crafting a savage roast..."):
                 # Import Google AI library only when needed
-                import google.generativeai as genai
+                from google import genai
                 
                 # Create prompt
                 prompt = f"""
