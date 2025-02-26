@@ -12,7 +12,6 @@ model = genai.GenerativeModel("gemini-2.0-flash")
 st.set_page_config(page_title="Roast Master", page_icon="🔥")
 
 api_key = st.sidebar.text_input("Enter your Google AI API Key", type="password")
-# genai.configure(api_key='AIzaSyCq1VdjVJNCgaIia16nUquJnsVW0QiOdsA')
 
 # Title and description
 st.title("🔥 Roast Master")
