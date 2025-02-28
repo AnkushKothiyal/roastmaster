@@ -11,15 +11,13 @@ model = genai.GenerativeModel("gemini-2.0-flash")
 # Page config
 st.set_page_config(page_title="Roast Master", page_icon="🔥")
 
-api_key = st.sidebar.text_input("Enter your Google AI API Key", type="password")
+# api_key = st.sidebar.text_input("Enter your Google AI API Key", type="password")
 
 # Title and description
 st.title("🔥 Roast Master")
 st.write("Enter a situation and get a funny roast from our AI Roast Master!")
 situation = st.text_area("Describe your situation:", placeholder="I was eating an ice cream on my way to the office, and it fell down.")
 
-# Create button first, then check conditions
-# generate_button = st.button("Generate Roast 🔥")
 
 prompt = f"""
                 You are a Roast Master who can produce some of the best roast. You'll be given a situation often a negative one and your job is to create a concise roast for the person.
@@ -49,20 +47,17 @@ prompt = f"""
                 """
 
 
-genai.configure(api_key=api_key)
+genai.configure(api_key=st.secrets["key"])
 
 if st.button("Generate Roast 🔥"):
-    if not api_key:
-        st.warning("Please enter your API key.")
-    else:
-        try:
-            with st.spinner("Cooking your roast :smiling_imp:"):
-                response = model.generate_content(prompt)
-                st.success("Gemini Response:")
-                st.write(response.text)
-        except Exception as e:
-            st.error(f"Error: {e}")
-            st.error(f"Detailed error: {str(e)}") 
+    try:
+        with st.spinner("Cooking your roast :smiling_imp:"):
+            response = model.generate_content(prompt)
+            st.success("Gemini Response:")
+            st.write(response.text)
+    except Exception as e:
+        st.error(f"Error: {e}")
+        st.error(f"Detailed error: {str(e)}") 
 
 
 # Footer
