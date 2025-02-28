@@ -53,13 +53,12 @@ if st.button("Generate Roast 🔥"):
     try:
         with st.spinner("Cooking your roast :smiling_imp:"):
             response = model.generate_content(prompt)
-            st.success("Gemini Response:")
             st.write(response.text)
     except Exception as e:
         st.error(f"Error: {e}")
-        st.error(f"Detailed error: {str(e)}") 
+        st.error("Oops, the program isn't working for some reason, if you had a really bad day message me on ankukothiyal@gmail, I'll personally roast you :smile:")
 
 
 # Footer
 st.markdown("---")
-st.markdown("Created by Ankush Kothiyal | Powered by Google's Gemini AI")
+st.markdown("Created by Ankush Kothiyal | Powered by Gemini")
