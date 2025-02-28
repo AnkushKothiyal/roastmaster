@@ -33,6 +33,8 @@ prompt = f"""
 
                 5. Play on the grammar - If there is a misspelled word or the grammar is incorrect, you may include that in your roast too.
 
+                6. Keep it brutal, the roast should feel like a roast and not just a punchline.
+
                 For example, if the situation is: 'I had an interview but at the last moment they cancelled it.'
                 Then some examples of a good roast could be:
                 1. They must have seen your resume and realized they already had enough clowns for the office.
